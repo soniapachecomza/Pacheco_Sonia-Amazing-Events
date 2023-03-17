@@ -15,6 +15,7 @@ async function getInfo(urlApi, container) {
     cargarCards(upcomingCard, container);
 
     let upChecking= document.getElementById("upCheck");
+    console.log(upChecking)
     let categorysFilter = [
       ...new Set(upcomingCard.map((event) => event.category)),
     ];
@@ -81,8 +82,7 @@ function cargarCards(upcomingCard, contenedor) {
     contenedor.appendChild(fragmento);
   } else {
     let div = document.createElement("div");
-    div.innerHTML =
-      '<p class="bg-black px-2 text-danger display-5">The title entered does not exist</p>';
+    div.innerHTML ='<p class="priceText">Wrong search...</p>';
     contenedor.appendChild(div);
   }
 }
