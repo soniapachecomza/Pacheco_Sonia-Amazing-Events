@@ -26,11 +26,14 @@ function cargarCard(card, container) {
   <div id="cardsDetails" class="card flexcardGold" style="max-width: 900px;">
   <div class="flexcardNumber flexcardNumberGold p-2 border w-90">
     <h5 class="flexcardTitle text-center p-2">${card.name}</h5>
+    </div>
     <div class="flexcardImg1">
+      <div class="card mb-3 mt-2">
       <img src=${card.image} class="flexcardimgItem1" alt=${card.name.split(" ").join("_")}>
+      </div>
     </div>
 
-  </div>
+  
   <div class=" card-body p-1 border border-danger-black bg-white w-50 p-4">
   
     <div class="p-2">
@@ -68,7 +71,7 @@ function cargarCard(card, container) {
         <p class="priceText m-2 ">$${card.price}</p>
        </div>
     </div>
-    <button type="submit" class="buttongold m-2 mb-5">
+    <button type="submit" class="buttongold m-2 mb-2 mx-5">
       <a href="./index.html?id=${card._id}" class="btn text-white  color-btn align-self-end">
         Index
       </a>

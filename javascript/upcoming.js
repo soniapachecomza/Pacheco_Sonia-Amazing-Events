@@ -47,7 +47,7 @@ async function getInfo(urlApi, container) {
 
 getInfo(url, containerCard);
 
-//cargarCards(upcomingCard, conteinerCard)
+//cards
 function cargarCards(upcomingCard, contenedor) {
   containerCard.innerHTML = "";
   if (upcomingCard.length > 0) {
@@ -88,35 +88,30 @@ function cargarCards(upcomingCard, contenedor) {
 }
 
 //category
-function cargarCheck(categorias, contenedor) {
-  let fragment = document.createDocumentFragment();
-  for (check of categorias) {
-    let checkDiv = document.createElement("div");
-    checkDiv.classList.add("form-check", "form-check-inline");
-    checkDiv.innerHTML = `<input class="form-check-input" type="checkbox" name="category" id=${check
-      .split(" ")
-      .join("_")}
+function cargarCheck(categorys, container) {
+  let fragmento = document.createDocumentFragment()
+  for (check of categorys) {
+    let checkDiv = document.createElement("div")
+    checkDiv.classList.add("form-check", "form-check-inline")
+    checkDiv.innerHTML = `<input class="form-check-input" name="category" type="checkbox" id=${check.split(" ").join("_")}
        value=${check.split(" ").join("_")}>
-     <label class="form-check-label" for=${check
-       .split(" ")
-       .join("_")}>${check}</label>`;
-    fragment.appendChild(checkDiv);
+     <label class="form-check-label" for=${check.split(" ").join("_")}>${check}</label>`
+    fragmento.appendChild(checkDiv)
   }
-  contenedor.appendChild(fragment);
-}
-
-//search
-function filterSearch(searchWord, listCard) {
-  return searchWord == ""
-    ? listCard
-    : listCard.filter(
-        (event) =>
-          event.name.toLowerCase().search(searchWord.toLowerCase().trim()) != -1
-      );
+  container.appendChild(fragmento)
 }
 
 function crossFilter(arrayCards, checked, searcheds) {
-  let cardCheck = filterCard(checked, arrayCards);
-  let cardSearched = filterSearch(searcheds, cardCheck);
-  cargarCards(cardSearched, containerCard);
+  let cardCheck = filterCard(checked, arrayCards)
+  let cardSearched = filterSearch(searcheds, cardCheck)
+  cargarCards(cardSearched, containerCard)
+
+}
+
+function filterCard(checkeado, listCard) {
+  return checkeado.length > 0 ? listCard.filter(event => checkeado.includes(event.category.replace(" ", "_"))) : listCard
+}
+
+function filterSearch(searchWord, listCard) {
+  return searchWord == "" ? listCard : listCard.filter(event => event.name.toLowerCase().search(searchWord.toLowerCase().trim()) != -1)
 }
